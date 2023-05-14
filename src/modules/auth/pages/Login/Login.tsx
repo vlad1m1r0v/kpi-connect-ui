@@ -16,7 +16,7 @@ export default function Login() {
     >
       <div className={css.container}>
         <Input label="E-mail" variant="outlined" />
-        <Input label="Password" variant="outlined" />
+        <Input type="password" label="Password" variant="outlined" />
         <Button variant="contained">
           <Typography>Login</Typography>
         </Button>
