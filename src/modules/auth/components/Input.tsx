@@ -1,6 +1,6 @@
 import { TextField, styled } from "@mui/material";
 
-const Input = styled(TextField)(({ theme }) => ({
+const Input = styled(TextField)(() => ({
   "& .MuiInputLabel-root": {
     color: "white !important",
   },
