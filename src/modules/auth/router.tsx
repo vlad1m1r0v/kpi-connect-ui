@@ -1,12 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Navigate, RouteProps } from "react-router-dom";
 import Login from "@/modules/auth/pages/Login";
+import { AuthLayout } from "@/shared/layouts";
 
-function AuthRouter() {
-  return (
-    <>
-      <Route path="/login" element={<Login />} />
-    </>
-  );
-}
+const AuthRouter: React.ReactElement<RouteProps> = (
+  <Route path="auth" element={<AuthLayout />}>
+    <Route path="login" element={<Login />} />
+    <Route index element={<Navigate to="login" />} />
+    <Route path="*" element={<Navigate to="login" />} />
+  </Route>
+);
 
 export default AuthRouter;

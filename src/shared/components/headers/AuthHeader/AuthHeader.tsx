@@ -4,7 +4,7 @@ import css from "./AuthHeader.module.css";
 export default function AuthHeader() {
   return (
     <div className={css.header}>
-      <img src="logo.png" className={css.logo}></img>
+      <img src="/logo.png" className={css.logo}></img>
       <Typography variant="h5" color="white">
         KPI Connect
       </Typography>

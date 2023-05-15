@@ -1,5 +1,4 @@
 import "@/shared/styles/reset.css";
-import "@/shared/styles/scrollbar.css";
 import { Provider } from "react-redux";
 import store from "./store";
 import { ThemeProvider } from "@emotion/react";

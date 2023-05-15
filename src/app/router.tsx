@@ -8,9 +8,7 @@ export default function AppRouter() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<AuthLayout />}>
-            {AuthRouter()}
-          </Route>
+          {AuthRouter}
           <Route path="/" element={<MainLayout />}>
             <Route
               path="/main"
