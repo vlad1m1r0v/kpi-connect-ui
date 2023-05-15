@@ -1,3 +1,4 @@
+import css from "./MainLayout.module.css";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -45,6 +46,7 @@ export default function MainLayout() {
       <Sidebar open={open} handleClose={handleSidebarOpen} />
       <Main open={open}>
         <SidebarHeader />
+        <div className={css.container}></div>
         <Outlet />
       </Main>
     </MainLayoutWrapper>

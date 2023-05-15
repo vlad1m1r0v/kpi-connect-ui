@@ -21,8 +21,16 @@ export default function AppRouter() {
                       width: "100%",
                       height: "2000px",
                       backgroundColor: "white",
+                      marginBottom: "10px",
                     }}
-                  ></div>
+                  />
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "2000px",
+                      backgroundColor: "white",
+                    }}
+                  />
                 </>
               }
             />
