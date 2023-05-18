@@ -26,6 +26,7 @@ const Input = styled(TextField)(() => ({
     },
   },
   marginBottom: "10px",
+  width: "100%",
 }));
 
 export default Input;

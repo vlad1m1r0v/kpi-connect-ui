@@ -1,7 +1,7 @@
 import css from "./MainLayout.module.css";
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { sidebarWidth } from "@/shared/consts/ui";
 import MainHeader from "@/shared/components/headers/MainHeader";
