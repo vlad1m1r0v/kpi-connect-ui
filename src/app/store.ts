@@ -2,6 +2,10 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import uiReducer from "@/modules/ui/slice";
 import authReducer from "@/modules/auth/slice";
 import { authApi } from "@/modules/auth/api";
+import {
+  setCredentialsMiddleware,
+  logOutMiddleware,
+} from "@/modules/auth/middleware";
 import { useDispatch } from "react-redux";
 
 const rootReducer = combineReducers({
@@ -15,7 +19,11 @@ const store = configureStore({
     rootReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware),
+    getDefaultMiddleware().concat(
+      authApi.middleware,
+      setCredentialsMiddleware.middleware,
+      logOutMiddleware.middleware
+    ),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
