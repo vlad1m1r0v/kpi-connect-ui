@@ -31,6 +31,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
 
 const MainLayoutWrapper = styled(Box)(() => ({
   backgroundColor: "#f7f7f8",
+  display: "flex",
 }));
 
 export default function MainLayout() {
@@ -40,7 +41,7 @@ export default function MainLayout() {
   const handleSidebarOpen = () => dispatch(toggleSidebar());
 
   return (
-    <MainLayoutWrapper sx={{ display: "flex" }}>
+    <MainLayoutWrapper>
       <CssBaseline />
       <MainHeader open={open} handleClick={handleSidebarOpen} />
       <Sidebar open={open} handleClose={handleSidebarOpen} />
