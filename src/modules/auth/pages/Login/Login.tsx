@@ -6,7 +6,7 @@ import Input from "@/modules/auth/components/Input";
 import styled from "@emotion/styled";
 import { useLoginMutation } from "@/modules/auth/api";
 import { useDispatch } from "react-redux";
-import { setCredentials } from "../../slice";
+import { setCredentials } from "@/modules/auth/slice";
 
 const schema = yup.object().shape({
   username: yup.string().email("Invalid email").required("Email is required"),
