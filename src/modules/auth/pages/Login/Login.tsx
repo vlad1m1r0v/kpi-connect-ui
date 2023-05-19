@@ -39,10 +39,6 @@ const StyledForgotButton = styled(Button)`
   margin-top: 10px;
 `;
 
-const StyledInput = styled(Input)`
-  margin-bottom: 10px;
-`;
-
 export default function Login() {
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
@@ -68,14 +64,14 @@ export default function Login() {
     <StyledPaper>
       <div style={{ width: "100%" }}>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
-          <StyledInput
+          <Input
             label="E-mail"
             variant="outlined"
             error={!!errors.username}
             helperText={errors.username?.message as string}
             {...register("username")}
           />
-          <StyledInput
+          <Input
             type="password"
             label="Password"
             variant="outlined"
