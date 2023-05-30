@@ -78,7 +78,7 @@ const useAuth = () => {
     user,
     role,
     roles,
-    feature,
+    feature: feature,
     features,
     login,
     logout,
