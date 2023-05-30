@@ -28,7 +28,6 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUserAndRoles: (state, action: PayloadAction<UsersMeResponse>) => {
-      console.log({ "action.payload": action.payload });
       const { roles, ...rest } = action.payload;
       state.roles = roles;
       state.role = roles[0];
