@@ -1,19 +1,21 @@
-import "@/shared/styles/reset.css";
+import { theme } from "@/configs";
+import { persistedStore, store } from "@/redux/store";
+import { Router } from "@/routes";
+import "@/styles/reset.css";
+import { ThemeProvider } from "@mui/material";
 import { Provider } from "react-redux";
-import store from "./store";
-import { ThemeProvider } from "@emotion/react";
-import theme from "@/config/theme";
+import { PersistGate } from "redux-persist/integration/react";
 
-import AppRouter from "./router";
-
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <AppRouter />
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistedStore}>
+        <ThemeProvider theme={theme}>
+          <Router />
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   );
-}
+};
 
 export default App;
