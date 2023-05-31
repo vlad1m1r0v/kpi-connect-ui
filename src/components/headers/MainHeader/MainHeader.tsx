@@ -1,4 +1,6 @@
+import UserButtons from "@/components/UserButtons";
 import { sidebarWidth } from "@/consts/ui";
+import useAuth from "@/hooks/useAuth";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, IconButton, Toolbar, Typography, styled } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
@@ -36,6 +38,12 @@ interface Props {
 }
 
 const MainHeader: React.FC<Props> = ({ open, handleClick }) => {
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
       <MainHeaderContainer position="fixed" open={open}>
@@ -49,7 +57,8 @@ const MainHeader: React.FC<Props> = ({ open, handleClick }) => {
           </IconButton>
           <Logo src="/logo.png" />
           <Typography variant="h5">KPI Connect</Typography>
-          <Button sx={{ marginLeft: "auto" }} variant="contained" color="error">
+          <UserButtons />
+          <Button variant="contained" color="error" onClick={handleLogout}>
             <Typography>Logout</Typography>
           </Button>
         </Toolbar>

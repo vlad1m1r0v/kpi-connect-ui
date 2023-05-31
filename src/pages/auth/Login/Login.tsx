@@ -1,6 +1,7 @@
 import useAuth from "@/hooks/useAuth";
+import { selectFeature, selectRole } from "@/redux/features/AuthSlice";
 import { openSnackbar } from "@/redux/features/UISlice";
-import { useAppDispatch } from "@/redux/store";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useEffect } from "react";
@@ -17,7 +18,10 @@ const schema = yup.object().shape({
 });
 
 export const Login = () => {
-  const { login, role, feature, isLoggedIn } = useAuth();
+  const { login, isLoggedIn } = useAuth();
+
+  const role = useAppSelector(selectRole);
+  const feature = useAppSelector(selectFeature);
 
   const dispatch = useAppDispatch();
 

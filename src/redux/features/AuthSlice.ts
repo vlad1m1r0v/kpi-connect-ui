@@ -5,21 +5,23 @@ type User = Omit<UsersMeResponse, "roles">;
 
 type Roles = UsersMeResponse["roles"];
 
+type Features = Record<string, FeaturesResponse | null>;
+
 interface AuthState {
   user: User | null;
   roles: Roles | null;
   role: string | null;
   tokens: LoginResponse | null;
-  features: FeaturesResponse | null;
+  features: Features;
   feature: string | null;
 }
 
 const initialState: AuthState = {
   user: null,
-  roles: null,
+  roles: [],
   role: null,
   tokens: null,
-  features: null,
+  features: {},
   feature: null,
 };
 
@@ -27,19 +29,19 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<Omit<UsersMeResponse, "roles">>) => {
+    setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
     setRole: (state, action: PayloadAction<string>) => {
       state.role = action.payload;
     },
-    setRoles: (state, action: PayloadAction<UsersMeResponse["roles"]>) => {
+    setRoles: (state, action: PayloadAction<Roles>) => {
       state.roles = action.payload;
     },
     setTokens: (state, action: PayloadAction<LoginResponse>) => {
       state.tokens = action.payload;
     },
-    setFeatures: (state, action: PayloadAction<FeaturesResponse>) => {
+    setFeatures: (state, action: PayloadAction<Features>) => {
       state.features = action.payload;
     },
     setFeature: (state, action: PayloadAction<string>) => {

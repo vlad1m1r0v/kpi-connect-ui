@@ -8,7 +8,7 @@ const MailingRoutes = () => (
       element={<Protected requiredRole="admin" requiredFeature="mailing" />}
     >
       <Route index element={<Mailing />} />
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="*" element={<Navigate to="" />} />
     </Route>
   </Routes>
 );
