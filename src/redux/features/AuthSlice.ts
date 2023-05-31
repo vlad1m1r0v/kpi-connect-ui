@@ -27,22 +27,20 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUserAndRoles: (state, action: PayloadAction<UsersMeResponse>) => {
-      const { roles, ...rest } = action.payload;
-      state.roles = roles;
-      state.role = roles[0];
-      state.user = rest;
+    setUser: (state, action: PayloadAction<Omit<UsersMeResponse, "roles">>) => {
+      state.user = action.payload;
     },
     setRole: (state, action: PayloadAction<string>) => {
       state.role = action.payload;
+    },
+    setRoles: (state, action: PayloadAction<UsersMeResponse["roles"]>) => {
+      state.roles = action.payload;
     },
     setTokens: (state, action: PayloadAction<LoginResponse>) => {
       state.tokens = action.payload;
     },
     setFeatures: (state, action: PayloadAction<FeaturesResponse>) => {
-      const features = action.payload;
-      state.features = features;
-      state.feature = features[0];
+      state.features = action.payload;
     },
     setFeature: (state, action: PayloadAction<string>) => {
       state.feature = action.payload;
@@ -61,8 +59,9 @@ export const selectFeature = (state: RootState) => state.auth.feature;
 export const selectTokens = (state: RootState) => state.auth.tokens;
 
 export const {
-  setUserAndRoles,
+  setUser,
   setRole,
+  setRoles,
   setTokens,
   setFeatures,
   setFeature,

@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 export const Mailing = () => {
-  return <Typography variant="h5">Mailing</Typography>;
+  return <Paper sx={{ width: "100%", height: "1000px", padding: 2 }} />;
 };

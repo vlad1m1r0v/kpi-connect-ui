@@ -1,6 +1,6 @@
 import { Sidebar, SidebarHeader } from "@/components/Sidebar";
 import { MainHeader } from "@/components/headers";
-import { sidebarWidth } from "@/consts/ui";
+import { backgroundColor, sidebarWidth } from "@/consts/ui";
 import { selectSidebar, toggleSidebar } from "@/redux/features/UISlice";
 import { Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -24,12 +24,13 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
-    minHeight: "100%",
   }),
+  backgroundColor: backgroundColor,
 }));
 
 const MainLayoutWrapper = styled(Box)(() => ({
   display: "flex",
+  minHeight: "100vh",
 }));
 
 const Container = styled("div")({

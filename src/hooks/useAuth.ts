@@ -9,11 +9,15 @@ import {
   selectRoles,
   selectUser,
   setFeatures,
+  setFeature,
   setTokens,
-  setUserAndRoles,
+  setUser,
+  setRole,
+  setRoles,
 } from "@/redux/features/AuthSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import processRoles from "@/utils/processRoles";
+import { useState } from "react";
 
 const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -29,6 +33,27 @@ const useAuth = () => {
   const [triggerGetFeaturesQuery] = useLazyGetFeaturesQuery();
 
   const isLoggedIn = Boolean(user) && Boolean(role) && Boolean(feature);
+
+  const changeFeature = async (selectedFeature: string) => {
+    dispatch(setFeature(selectedFeature));
+  };
+
+  const changeRole = async (selectedRole: string) => {
+    dispatch(setRole(selectedRole));
+
+    const { data: featuresResponse, error: featuresError } =
+      await triggerGetFeaturesQuery(selectedRole, false);
+
+    if (featuresError) {
+      throw new Error((featuresError as RTKQueryError).data.error_description);
+    }
+
+    dispatch(setFeatures(featuresResponse as FeaturesResponse));
+
+    const feature = (featuresResponse as FeaturesResponse)[0];
+
+    changeFeature(feature);
+  };
 
   const login = async (values: LoginParams) => {
     const { data: loginResponse, error: loginError } = await triggerLoginQuery(
@@ -52,21 +77,13 @@ const useAuth = () => {
     }
 
     const { roles: unprocessedRoles, ...rest } = meResponse as UsersMeResponse;
+    dispatch(setUser(rest));
 
     const processedRoles = processRoles(unprocessedRoles);
+    dispatch(setRoles(processedRoles));
 
     const processedRole = processedRoles[0];
-
-    const { data: featuresResponse, error: featuresError } =
-      await triggerGetFeaturesQuery(processedRole, false);
-
-    if (featuresError) {
-      throw new Error((featuresError as RTKQueryError).data.error_description);
-    }
-
-    dispatch(setUserAndRoles({ roles: processedRoles, ...rest }));
-
-    dispatch(setFeatures(featuresResponse as FeaturesResponse));
+    await changeRole(processedRole);
   };
 
   const logout = () => {
@@ -74,14 +91,16 @@ const useAuth = () => {
   };
 
   return {
-    isLoggedIn,
-    user,
-    role,
-    roles,
-    feature: feature,
-    features,
+    changeRole,
+    changeFeature,
     login,
     logout,
+    isLoggedIn,
+    user,
+    feature,
+    features,
+    role,
+    roles,
   };
 };
 
