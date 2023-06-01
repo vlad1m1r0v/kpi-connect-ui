@@ -1,4 +1,4 @@
-import { selectRole } from "@/redux/features/AuthSlice";
+import { selectFeatures, selectRole } from "@/redux/features/AuthSlice";
 import { useAppSelector } from "@/redux/store";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
@@ -9,7 +9,6 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  ListSubheader,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -53,12 +52,20 @@ const CollapseList: React.FC<Props> = ({ list }) => {
 
 export const ListItems = () => {
   const role = useAppSelector(selectRole);
+  const availableFeatures = useAppSelector(selectFeatures);
 
   const [lists, setLists] = useState<Feature[]>();
 
   useEffect(() => {
-    if (role) setLists(features.filter((feature) => feature.role === role));
-  }, [role]);
+    if (availableFeatures)
+      setLists(
+        features.filter(
+          (feature) =>
+            feature.role === role &&
+            availableFeatures[role]?.includes(feature.feature)
+        )
+      );
+  }, [availableFeatures]);
 
   return (
     <>
@@ -68,10 +75,10 @@ export const ListItems = () => {
       >
         <Divider />
         {lists?.map((list, index) => (
-          <>
+          <div key={index}>
             <CollapseList list={list} />
             <Divider />
-          </>
+          </div>
         ))}
       </List>
     </>

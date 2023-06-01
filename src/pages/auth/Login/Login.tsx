@@ -74,6 +74,7 @@ export const Login = () => {
           <TextField
             label="password"
             variant="outlined"
+            type="password"
             error={!!errors.password}
             helperText={errors.password?.message as string}
             {...register("password")}
