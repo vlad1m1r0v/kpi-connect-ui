@@ -5,6 +5,8 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import { styled, useTheme } from "@mui/material/styles";
 import * as React from "react";
+import ListItems from "../ListItems/ListItems";
+import { Typography } from "@mui/material";
 
 const SidebarHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -37,6 +39,9 @@ const Sidebar: React.FC<Props> = ({ open, handleClose }) => {
       open={open}
     >
       <SidebarHeader>
+        <Typography variant="h6" sx={{ marginRight: "auto", paddingLeft: 2 }}>
+          Features
+        </Typography>
         <IconButton onClick={handleClose}>
           {theme.direction === "ltr" ? (
             <ChevronLeftIcon />
@@ -45,6 +50,7 @@ const Sidebar: React.FC<Props> = ({ open, handleClose }) => {
           )}
         </IconButton>
       </SidebarHeader>
+      <ListItems />
     </Drawer>
   );
 };
