@@ -59,7 +59,7 @@ const MainHeader: React.FC<Props> = ({ open, handleClick }) => {
           <Typography variant="h5">KPI Connect</Typography>
           <UserButtons />
           <Button variant="contained" color="error" onClick={handleLogout}>
-            <Typography>Logout</Typography>
+            <Typography sx={{ textTransform: "none" }}>Logout</Typography>
           </Button>
         </Toolbar>
       </MainHeaderContainer>

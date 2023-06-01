@@ -5,6 +5,7 @@ import {
 } from "@/redux/features/AuthSlice";
 import { useAppSelector } from "@/redux/store";
 import SettingsIcon from "@mui/icons-material/Settings";
+import PersonIcon from "@mui/icons-material/Person";
 import {
   Button,
   ButtonGroup,
@@ -57,7 +58,10 @@ export const UserButtons = () => {
       >
         <ButtonGroup variant="contained">
           <UserButton id="profile-button" onClick={handleProfileClick}>
-            <Typography>{user?.email}</Typography>
+            <PersonIcon sx={{ mr: 1 }} />
+            <Typography sx={{ textTransform: "none" }}>
+              {user?.email}
+            </Typography>
           </UserButton>
           <UserButton
             id="settings-button"
