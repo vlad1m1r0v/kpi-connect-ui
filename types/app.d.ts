@@ -51,3 +51,13 @@ interface UsersMeResponse {
 }
 
 type FeaturesResponse = string[];
+
+interface Person {
+  id: number;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  fullName: string;
+  role: string;
+  outside: boolean;
+}
