@@ -18,6 +18,29 @@ interface LoginParams {
   password: string;
 }
 
+interface Address {
+  street: string;
+  postal_code: string;
+  city: string;
+  district: string;
+  state: string;
+  country: string;
+}
+
+type ScienceMetrics = Record<string, string | number>;
+
+interface PersonalHonorDegree {
+  id: number;
+  name: string;
+  priority: number;
+}
+
+interface Degree {
+  id: number;
+  name: string;
+  fullName: string;
+}
+
 interface UsersMeResponse {
   id: number;
   email: string;
@@ -37,20 +60,22 @@ interface UsersMeResponse {
     birthDate: string;
     workPhoneNumber: string;
     createdAt: string;
-    personalScienceMetrics: Record<string, string>;
+    personalScienceMetrics: ScienceMetrics;
     mobilePhoneNumbers: string[];
-    address: {
-      street: string;
-      postal_code: string;
-      city: string;
-      district: string;
-      state: string;
-      country: string;
-    };
+    address: Address;
+    personalHonorDegrees: PersonalHonorDegree[];
+    academicDegree: Degree;
+    scienceDegree: Degree;
   };
 }
 
 type FeaturesResponse = string[];
+
+type User = Omit<UsersMeResponse, "roles">;
+
+type Roles = UsersMeResponse["roles"];
+
+type Features = Record<string, FeaturesResponse | null>;
 
 interface Person {
   id: number;

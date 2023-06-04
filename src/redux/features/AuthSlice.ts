@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-type User = Omit<UsersMeResponse, "roles">;
-
-type Roles = UsersMeResponse["roles"];
-
-type Features = Record<string, FeaturesResponse | null>;
-
 interface AuthState {
   user: User | null;
   roles: Roles | null;
