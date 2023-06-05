@@ -86,3 +86,9 @@ interface Person {
   role: string;
   outside: boolean;
 }
+
+interface ChangePasswordParams {
+  oldPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+}

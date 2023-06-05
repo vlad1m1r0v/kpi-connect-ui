@@ -11,9 +11,16 @@ const usersApi = createApi({
         method: "GET",
       }),
     }),
+    changePassword: builder.query<{} | ErrorResponse, ChangePasswordParams>({
+      query: (credentials) => ({
+        url: "/users/change-password",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
   }),
 });
 
-export const { useLazyGetMeQuery } = usersApi;
+export const { useLazyGetMeQuery, useLazyChangePasswordQuery } = usersApi;
 
 export default usersApi;
