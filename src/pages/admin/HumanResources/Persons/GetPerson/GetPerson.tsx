@@ -36,10 +36,10 @@ const Profile = () => {
         <Address person={person} />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <ScienceIndicators />
+        <ScienceIndicators person={person} />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <Degrees />
+        <Degrees person={person} />
       </TabPanel>
     </Box>
   );

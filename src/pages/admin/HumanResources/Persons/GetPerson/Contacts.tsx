@@ -17,7 +17,7 @@ const Contacts: React.FC<Props> = ({ person }) => {
           <div>
             <Title name="Phone numbers" />
             {person.mobilePhoneNumbers.map((phoneNumber, index) => (
-              <Typography ml={2} mb={1}>
+              <Typography key={index} ml={2} mb={1}>
                 {phoneNumber}
               </Typography>
             ))}
