@@ -46,10 +46,12 @@ const ChangePassword = () => {
         })
       );
     } else {
-      openSnackbar({
-        variant: "success",
-        message: "Password changed successfully",
-      });
+      dispatch(
+        openSnackbar({
+          variant: "success",
+          message: "Password changed successfully",
+        })
+      );
     }
   };
 

@@ -30,10 +30,6 @@ const adminHumanResourcesFeature: Feature = {
       link: "/admin/human-resources/students",
     },
     {
-      name: "persons",
-      link: "/admin/human-resources/persons",
-    },
-    {
       name: "postgraduates",
       link: "/admin/human-resources/postgraduates",
     },

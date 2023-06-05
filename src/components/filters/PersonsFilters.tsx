@@ -1,6 +1,8 @@
 import {
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
   InputLabel,
   MenuItem,
   Select,
@@ -28,6 +30,7 @@ const PersonsFilter = () => {
             <MenuItem value="teacher">Teacher</MenuItem>
           </Select>
         </FormControl>
+        <FormControlLabel control={<Checkbox />} label="Outside" />
         <Stack direction={"row"} spacing={1}>
           <Button
             variant="contained"
