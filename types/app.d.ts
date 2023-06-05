@@ -41,32 +41,36 @@ interface Degree {
   fullName: string;
 }
 
+interface PersonResponse {
+  id: number;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  nameSummary: string;
+  firstNameEnglish: string;
+  lastNameEnglish: string;
+  nameEnglishSummary: string;
+  gender: number;
+  inn: string;
+  placeOfWork: string;
+  birthDate: string;
+  workPhoneNumber: string;
+  email: string;
+  createdAt: string;
+  personalScienceMetrics: ScienceMetrics;
+  mobilePhoneNumbers: string[];
+  address: Address;
+  personalHonorDegrees: PersonalHonorDegree[];
+  academicDegree: Degree;
+  scienceDegree: Degree;
+}
+
 interface UsersMeResponse {
   id: number;
   email: string;
   last_login: string;
   roles: string[];
-  person: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    middleName: string;
-    nameSummary: string;
-    firstNameEnglish: string;
-    lastNameEnglish: string;
-    nameEnglishSummary: string;
-    gender: number;
-    placeOfWork: string;
-    birthDate: string;
-    workPhoneNumber: string;
-    createdAt: string;
-    personalScienceMetrics: ScienceMetrics;
-    mobilePhoneNumbers: string[];
-    address: Address;
-    personalHonorDegrees: PersonalHonorDegree[];
-    academicDegree: Degree;
-    scienceDegree: Degree;
-  };
+  person: PersonResponse;
 }
 
 type FeaturesResponse = string[];

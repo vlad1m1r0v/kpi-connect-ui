@@ -56,7 +56,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <Paper sx={{ p: 2 }}>
+    <Paper square={true} sx={{ p: 2 }}>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <Stack spacing={2}>
           <TextField

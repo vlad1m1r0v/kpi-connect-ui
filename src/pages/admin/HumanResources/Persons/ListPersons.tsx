@@ -1,5 +1,5 @@
 import persons from "@/mocks/persons";
-import Paginator from "@/components/Pagination/Pagination";
+import Paginator from "@/components/Pagination";
 import PersonsFilter from "@/components/filters/PersonsFilters";
 import PersonsTable from "@/components/tables/PersonsTable";
 
